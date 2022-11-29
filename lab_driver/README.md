@@ -4,11 +4,11 @@ Create a character device driver that takes measurements over a network of senso
 
 The networs consists of wireless mesh of card Crossbow MPR2400CA with sensors MDA100CB and a base station MPR2400CA connected via a USB MIB520CB serial connection with a linux pc where the driver is implemented. The following is a representation of the  network.
 
-![](/images/mesh.png)
+![](/lab_driver/images/mesh.png)
 
 The implementation functions as a extention of the already existance USB driver of linux but modified to accomodate our sensors. The driver has architectural structure the following. 
 
-![](/images/arch.png)
+![](/lab_driver/images/arch.png)
 
 - (a) : data captured by the base station
 - (b) : moved to system over serial usb

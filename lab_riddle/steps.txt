@@ -1,0 +1,62 @@
+Give execution permissions to riddle with chmod +x riddle
+
+Give extra hints with I_NEED_TECH_HINTS = 1 
+
+Challenge 0: 
+Created file ".hello_there" because of a system call that tried to open it.
+
+Challenge 1: 
+Remove write permission for .hello_there with chmod -w .hello_there
+
+Challenge 2: 
+Run ./riddle & so that it is in background and then kill -s SIGCONT $! to send the signal
+
+Challenge 3: 
+Set environment variable ANSWER to 42 with export ANSWER=42
+
+Challenge 4: 
+Create pipe with mkfifo magic_mirror
+
+Challenge 5: 
+Open file with file descriptor 99
+
+Challenge 6: 
+Create pipes with correct fd's -> ./pong
+
+Challenge 7: 
+Hard link so that .hey_there is actually .hello_there -> ln .hello_there .hey_there
+
+Challenge 8: 
+Create 10 sparse files with truncate and write on the last line -> ./big_data
+
+Challenge 9: 
+Code for server that reads request from client and sends back result of addition, 
+run ./socket & and then as it listens run ./riddle
+
+Challenge 10: 
+Create secret_number and hard link then stop execution of riddle with Ctrl-Z, 		 
+read from hard link the number, fg and paste it
+
+Challenge 11: 
+Open file secret_number, let riddle write to it and then read it and 
+send number to stdin -> ./read_secret
+
+Challenge 12: 
+strace ./riddle then Ctrl-z when it starts waiting.
+The mmap'ed tmp/riddle-XXXX file opened is always saved on a memory range 
+that includes the memory location. The last 3 hex digits of the memory 
+address are in fact the offset in bytes from the start of the file. If
+it is 06f then vim tmp/riddle-XXXX and move cursor 111 times. On position 112
+insert the character. Then fg %1 to restart job 
+
+*Same thing can be done by Ctrl-z at strace ./riddle, run ./mem_char with
+the 3 arguments and then fg %1 or whatever job strace was
+
+Challenge 13:
+./riddle, then ctrl-z, then ./sigbus_save, then fg %1, then press enter/random key.
+This challenge tries to access memory that is not mapped and gets sigbus
+
+Challenge 14:
+Set the last living process ID to 32766 so that riddle will
+be 32767 with the following command ->
+sudo echo 32766 > /proc/sys/kernel/ns_last_pid; ./riddle
